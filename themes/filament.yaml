@@ -11,7 +11,7 @@ typography:
   fontUrl: 'https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400..700;1,9..40,400..700&family=JetBrains+Mono:wght@400;500;600&display=swap'
   fontSans: "'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif"
   fontMono: "'JetBrains Mono', ui-monospace, SFMono-Regular, monospace"
-  baseSize: '16.5px'
+  baseSize: '16px'
   lineHeight: '1.6'
   letterSpacing: '-0.01em'
 layout:
@@ -63,7 +63,7 @@ customCSS: |
     color: #f8fafc !important;
     -webkit-font-smoothing: antialiased;
     letter-spacing: -0.01em;
-    font-size: 16.5px !important;
+    font-size: 16px !important;
   }
 
   body {
@@ -108,16 +108,6 @@ customCSS: |
     color: #94a3b8 !important;
   }
 
-  /* Brand */
-  aside#app-sidebar .tracking-\[0\.0525rem\] {
-    font-family: 'DM Sans', sans-serif !important;
-    text-transform: none !important;
-    letter-spacing: -0.02em !important;
-    font-size: 1.15rem !important;
-    font-weight: 700 !important;
-    color: #f8fafc !important;
-  }
-
   /* Scrollbars */
   * {
     scrollbar-width: thin !important;
@@ -138,25 +128,39 @@ customCSS: |
     background: rgba(255, 255, 255, 0.25) !important;
   }
 
-  /* Sidebar */
+  /* SIDEBAR: Compact & refined navigation */
   aside#app-sidebar {
-    width: 17.5rem !important;
+    width: 16rem !important;
     background: var(--filament-sidebar) !important;
     backdrop-filter: blur(24px) !important;
     -webkit-backdrop-filter: blur(24px) !important;
     border-right: 1px solid var(--filament-line) !important;
   }
 
+  /* Brand title in sidebar */
+  aside#app-sidebar .tracking-\[0\.0525rem\] {
+    font-family: 'DM Sans', sans-serif !important;
+    text-transform: none !important;
+    letter-spacing: -0.02em !important;
+    font-size: 0.95rem !important;
+    line-height: 1.15 !important;
+    font-weight: 700 !important;
+    color: #f8fafc !important;
+  }
+
+  /* Navigation items: compact size */
   aside#app-sidebar nav a,
   aside#app-sidebar a,
   aside#app-sidebar button {
-    border-radius: 0.625rem !important;
+    border-radius: 0.5rem !important;
     font-weight: 500 !important;
     text-transform: none !important;
     letter-spacing: normal !important;
-    font-size: 0.95rem !important;
-    padding: 0.55rem 0.85rem !important;
-    transition: all 0.15s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    font-size: 0.84rem !important;
+    padding: 0.35rem 0.65rem !important;
+    line-height: 1.35 !important;
+    color: #94a3b8 !important;
+    transition: all 0.12s ease !important;
   }
 
   aside#app-sidebar nav a:hover,
@@ -176,8 +180,27 @@ customCSS: |
   }
 
   aside#app-sidebar svg {
-    width: 1.25rem !important;
-    height: 1.25rem !important;
+    width: 1.05rem !important;
+    height: 1.05rem !important;
+  }
+
+  /* Section headers in sidebar */
+  aside#app-sidebar span[class*="text-display"],
+  aside#app-sidebar span.text-xs,
+  aside#app-sidebar [role="group"] > span {
+    font-size: 0.7rem !important;
+    letter-spacing: 0.06em !important;
+    text-transform: uppercase !important;
+    font-weight: 600 !important;
+    color: #64748b !important;
+    padding: 0.5rem 0.75rem 0.2rem !important;
+  }
+
+  /* System status readout in sidebar footer */
+  aside#app-sidebar div.text-xs,
+  aside#app-sidebar div[class*="SidebarSystemActions"] {
+    font-size: 0.78rem !important;
+    line-height: 1.4 !important;
   }
 
   /* Header */
@@ -185,7 +208,7 @@ customCSS: |
     background: rgba(11, 17, 30, 0.85) !important;
     backdrop-filter: blur(16px) !important;
     border-bottom: 1px solid var(--filament-line) !important;
-    min-height: 3.75rem !important;
+    min-height: 3.5rem !important;
   }
 
   /* Cards */
@@ -211,10 +234,10 @@ customCSS: |
   div[class*="CardHeader"],
   .p-4.border-b {
     border-bottom: 1px solid var(--filament-line) !important;
-    padding: 1.1rem 1.25rem !important;
+    padding: 1rem 1.25rem !important;
   }
 
-  /* Buttons */
+  /* Main content buttons */
   button {
     border-radius: 0.625rem !important;
     font-family: 'DM Sans', sans-serif !important;
@@ -226,16 +249,16 @@ customCSS: |
   }
 
   button:not([class*="icon"]):not([class*="ghost"]) {
-    padding: 0.55rem 1.2rem !important;
-    min-height: 2.45rem !important;
-    font-size: 0.95rem !important;
+    padding: 0.5rem 1.15rem !important;
+    min-height: 2.35rem !important;
+    font-size: 0.925rem !important;
   }
 
   button.h-8, button.h-7, button.h-9 {
-    min-height: 2.35rem !important;
+    min-height: 2.25rem !important;
     height: auto !important;
-    padding: 0.45rem 1rem !important;
-    font-size: 0.9rem !important;
+    padding: 0.4rem 0.95rem !important;
+    font-size: 0.875rem !important;
   }
 
   /* Inputs */
@@ -266,8 +289,8 @@ customCSS: |
     font-weight: 500 !important;
     border-radius: 9999px !important;
     text-transform: none !important;
-    font-size: 0.85rem !important;
-    padding: 0.25rem 0.7rem !important;
+    font-size: 0.825rem !important;
+    padding: 0.2rem 0.65rem !important;
   }
 
   /* Inline code */
@@ -288,8 +311,8 @@ customCSS: |
   div[role="tab"],
   div[role="tablist"] button {
     border-radius: 0.5rem !important;
-    font-size: 0.9rem !important;
-    padding: 0.4rem 0.9rem !important;
+    font-size: 0.875rem !important;
+    padding: 0.4rem 0.85rem !important;
     font-weight: 500 !important;
     transition: all 0.15s ease !important;
   }
