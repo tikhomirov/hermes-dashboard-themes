@@ -8,16 +8,18 @@ palette:
   warmGlow: 'rgba(245, 158, 11, 0.4)'
   noiseOpacity: 0.0
 typography:
-  fontUrl: 'https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400..700;1,9..40,400..700&display=swap'
+  fontUrl: 'https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400..700;1,9..40,400..700&family=JetBrains+Mono:wght@400;500;600&display=swap'
   fontSans: "'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif"
   fontMono: "'JetBrains Mono', ui-monospace, SFMono-Regular, monospace"
-  baseSize: '15px'
+  baseSize: '16.5px'
   lineHeight: '1.6'
   letterSpacing: '-0.01em'
 layout:
   radius: '0.75rem'
   density: comfortable
 layoutVariant: standard
+terminalBackground: '#090d16'
+terminalForeground: '#f8fafc'
 colorOverrides:
   card: 'rgba(15, 23, 42, 0.6)'
   cardForeground: '#f8fafc'
@@ -38,16 +40,21 @@ colorOverrides:
   warning: '#f59e0b'
 customCSS: |
   /* Filament aesthetic */
-  @import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400..700;1,9..40,400..700&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400..700;1,9..40,400..700&family=JetBrains+Mono:wght@400;500;600&display=swap');
 
   :root {
     --filament-canvas: #090d16;
     --filament-panel: rgba(15, 23, 42, 0.65);
     --filament-sidebar: rgba(11, 17, 30, 0.92);
     --filament-line: rgba(255, 255, 255, 0.07);
-    --filament-line-strong: rgba(255, 255, 255, 0.12);
+    --filament-line-strong: rgba(255, 255, 255, 0.14);
     --filament-amber: #f59e0b;
     --filament-amber-glow: rgba(245, 158, 11, 0.2);
+
+    --font-rules-compressed: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+    --font-rules-expanded: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+    --font-mondwest: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+    --font-courier: 'JetBrains Mono', ui-monospace, SFMono-Regular, monospace !important;
   }
 
   html, body, #root {
@@ -55,13 +62,63 @@ customCSS: |
     background-color: var(--filament-canvas) !important;
     color: #f8fafc !important;
     -webkit-font-smoothing: antialiased;
+    letter-spacing: -0.01em;
+    font-size: 16.5px !important;
   }
 
   body {
     background: radial-gradient(circle at 50% 0%, rgba(245, 158, 11, 0.04) 0%, transparent 55%), #090d16 !important;
   }
 
-  /* Smooth scrollbars */
+  /* Typography retro overrides */
+  .font-expanded,
+  .font-compressed,
+  .font-mondwest {
+    font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+    letter-spacing: -0.015em !important;
+  }
+
+  .font-courier {
+    font-family: 'JetBrains Mono', ui-monospace, SFMono-Regular, monospace !important;
+  }
+
+  /* Headings */
+  h1, [class*="CardTitle"], [class*="font-expanded"], [class*="text-display"] {
+    font-family: 'DM Sans', sans-serif !important;
+    text-transform: none !important;
+    letter-spacing: -0.02em !important;
+    color: #f8fafc !important;
+  }
+  h1 { font-weight: 700 !important; font-size: 1.85rem !important; }
+  h2 { font-weight: 600 !important; font-size: 1.45rem !important; }
+  h3, [class*="CardTitle"] { font-weight: 600 !important; font-size: 1.15rem !important; }
+
+  /* Body and descriptions readability */
+  p, .text-sm, .text-xs {
+    line-height: 1.6 !important;
+  }
+  .text-sm {
+    font-size: 0.95rem !important;
+  }
+  .text-xs {
+    font-size: 0.85rem !important;
+  }
+  .text-muted-foreground {
+    font-size: 0.925rem !important;
+    color: #94a3b8 !important;
+  }
+
+  /* Brand */
+  aside#app-sidebar .tracking-\[0\.0525rem\] {
+    font-family: 'DM Sans', sans-serif !important;
+    text-transform: none !important;
+    letter-spacing: -0.02em !important;
+    font-size: 1.15rem !important;
+    font-weight: 700 !important;
+    color: #f8fafc !important;
+  }
+
+  /* Scrollbars */
   * {
     scrollbar-width: thin !important;
     scrollbar-color: rgba(255, 255, 255, 0.12) transparent !important;
@@ -69,6 +126,9 @@ customCSS: |
   ::-webkit-scrollbar {
     width: 6px !important;
     height: 6px !important;
+  }
+  ::-webkit-scrollbar-track {
+    background: transparent !important;
   }
   ::-webkit-scrollbar-thumb {
     background: rgba(255, 255, 255, 0.12) !important;
@@ -80,31 +140,44 @@ customCSS: |
 
   /* Sidebar */
   aside#app-sidebar {
+    width: 17.5rem !important;
     background: var(--filament-sidebar) !important;
     backdrop-filter: blur(24px) !important;
     -webkit-backdrop-filter: blur(24px) !important;
     border-right: 1px solid var(--filament-line) !important;
   }
 
+  aside#app-sidebar nav a,
   aside#app-sidebar a,
   aside#app-sidebar button {
     border-radius: 0.625rem !important;
     font-weight: 500 !important;
+    text-transform: none !important;
+    letter-spacing: normal !important;
+    font-size: 0.95rem !important;
+    padding: 0.55rem 0.85rem !important;
     transition: all 0.15s cubic-bezier(0.4, 0, 0.2, 1) !important;
   }
 
+  aside#app-sidebar nav a:hover,
   aside#app-sidebar a:hover {
     background: rgba(255, 255, 255, 0.05) !important;
     color: #f8fafc !important;
   }
 
+  aside#app-sidebar nav a.active,
   aside#app-sidebar a.active,
   aside#app-sidebar a[aria-current="page"] {
     background: rgba(245, 158, 11, 0.12) !important;
     color: #f59e0b !important;
     font-weight: 600 !important;
     border: 1px solid rgba(245, 158, 11, 0.22) !important;
-    box-shadow: 0 0 12px rgba(245, 158, 11, 0.08) !important;
+    box-shadow: 0 0 16px rgba(245, 158, 11, 0.08) !important;
+  }
+
+  aside#app-sidebar svg {
+    width: 1.25rem !important;
+    height: 1.25rem !important;
   }
 
   /* Header */
@@ -112,11 +185,13 @@ customCSS: |
     background: rgba(11, 17, 30, 0.85) !important;
     backdrop-filter: blur(16px) !important;
     border-bottom: 1px solid var(--filament-line) !important;
+    min-height: 3.75rem !important;
   }
 
   /* Cards */
   .bg-card,
-  div[class*="bg-card"] {
+  div[class*="bg-card"],
+  div[class*="border-midground\/15"] {
     background: var(--filament-panel) !important;
     backdrop-filter: blur(16px) !important;
     -webkit-backdrop-filter: blur(16px) !important;
@@ -132,12 +207,47 @@ customCSS: |
     box-shadow: 0 8px 30px -4px rgba(0, 0, 0, 0.6), 0 0 0 1px rgba(245, 158, 11, 0.12) !important;
   }
 
+  /* Card headers */
+  div[class*="CardHeader"],
+  .p-4.border-b {
+    border-bottom: 1px solid var(--filament-line) !important;
+    padding: 1.1rem 1.25rem !important;
+  }
+
+  /* Buttons */
+  button {
+    border-radius: 0.625rem !important;
+    font-family: 'DM Sans', sans-serif !important;
+    font-weight: 500 !important;
+    text-transform: none !important;
+    letter-spacing: normal !important;
+    font-size: 0.95rem !important;
+    transition: all 0.15s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  }
+
+  button:not([class*="icon"]):not([class*="ghost"]) {
+    padding: 0.55rem 1.2rem !important;
+    min-height: 2.45rem !important;
+    font-size: 0.95rem !important;
+  }
+
+  button.h-8, button.h-7, button.h-9 {
+    min-height: 2.35rem !important;
+    height: auto !important;
+    padding: 0.45rem 1rem !important;
+    font-size: 0.9rem !important;
+  }
+
   /* Inputs */
   input, textarea, select {
     background: rgba(255, 255, 255, 0.04) !important;
     border: 1px solid var(--filament-line) !important;
     border-radius: 0.625rem !important;
     color: #f8fafc !important;
+    font-family: 'DM Sans', sans-serif !important;
+    font-size: 0.95rem !important;
+    padding: 0.55rem 0.9rem !important;
+    min-height: 2.5rem !important;
     transition: all 0.15s ease !important;
   }
 
@@ -146,4 +256,67 @@ customCSS: |
     outline: none !important;
     box-shadow: 0 0 0 3px var(--filament-amber-glow) !important;
     background: rgba(255, 255, 255, 0.06) !important;
+  }
+
+  /* Badges */
+  [class*="badge"],
+  [class*="rounded-full"],
+  div[class*="platformStateBadge"] {
+    font-family: 'DM Sans', sans-serif !important;
+    font-weight: 500 !important;
+    border-radius: 9999px !important;
+    text-transform: none !important;
+    font-size: 0.85rem !important;
+    padding: 0.25rem 0.7rem !important;
+  }
+
+  /* Inline code */
+  code, span[class*="font-mono"] {
+    font-family: 'JetBrains Mono', monospace !important;
+    font-size: 0.875rem !important;
+  }
+
+  /* Tabs */
+  div[role="tablist"],
+  .inline-flex.rounded-lg {
+    background: rgba(255, 255, 255, 0.05) !important;
+    border: 1px solid var(--filament-line) !important;
+    border-radius: 0.625rem !important;
+    padding: 4px !important;
+  }
+
+  div[role="tab"],
+  div[role="tablist"] button {
+    border-radius: 0.5rem !important;
+    font-size: 0.9rem !important;
+    padding: 0.4rem 0.9rem !important;
+    font-weight: 500 !important;
+    transition: all 0.15s ease !important;
+  }
+
+  div[role="tab"][aria-selected="true"],
+  div[role="tablist"] button[data-state="active"] {
+    background: rgba(255, 255, 255, 0.12) !important;
+    color: #f8fafc !important;
+    font-weight: 600 !important;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2) !important;
+  }
+
+  /* Tables */
+  table {
+    border-collapse: separate !important;
+    border-spacing: 0 !important;
+  }
+  th {
+    text-transform: uppercase !important;
+    font-size: 0.78rem !important;
+    letter-spacing: 0.06em !important;
+    color: #94a3b8 !important;
+    padding: 0.75rem 1rem !important;
+    border-bottom: 1px solid var(--filament-line) !important;
+  }
+  td {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.04) !important;
+    padding: 0.75rem 1rem !important;
+    font-size: 0.95rem !important;
   }
