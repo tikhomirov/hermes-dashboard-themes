@@ -1,0 +1,278 @@
+name: mushrooms-light
+label: Mushrooms Light
+description: Light clean theme based on MoonShine Mushrooms theme with DM Sans, crisp white cards, and lime accents
+palette:
+  background: '#f8fafc'
+  midground: '#0f172a'
+  foreground: '#0f172a'
+  warmGlow: 'rgba(75, 118, 81, 0.25)'
+  noiseOpacity: 0.0
+typography:
+  fontUrl: 'https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400..700;1,9..40,400..700&family=JetBrains+Mono:wght@400;500;600&display=swap'
+  fontSans: "'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif"
+  fontMono: "'JetBrains Mono', ui-monospace, SFMono-Regular, monospace"
+  baseSize: '14.5px'
+  lineHeight: '1.55'
+  letterSpacing: '-0.01em'
+layout:
+  radius: '0.75rem'
+  density: comfortable
+layoutVariant: standard
+terminalBackground: '#ffffff'
+terminalForeground: '#0f172a'
+colorOverrides:
+  card: '#ffffff'
+  cardForeground: '#0f172a'
+  popover: '#ffffff'
+  popoverForeground: '#0f172a'
+  primary: '#0f172a'
+  primaryForeground: '#ffffff'
+  secondary: '#f1f5f9'
+  secondaryForeground: '#0f172a'
+  muted: '#f8fafc'
+  mutedForeground: '#64748b'
+  accent: 'rgba(203, 240, 176, 0.45)'
+  accentForeground: '#284e2d'
+  border: 'rgba(15, 23, 42, 0.08)'
+  input: '#ffffff'
+  ring: '#4b7651'
+  success: '#2e7d32'
+  warning: '#b45309'
+customCSS: |
+  /* MoonShine Mushrooms Light theme overrides */
+  @import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400..700;1,9..40,400..700&family=JetBrains+Mono:wght@400;500;600&display=swap');
+
+  :root {
+    --mushrooms-canvas: #f8fafc;
+    --mushrooms-panel: #ffffff;
+    --mushrooms-sidebar: rgba(255, 255, 255, 0.92);
+    --mushrooms-line: rgba(15, 23, 42, 0.08);
+    --mushrooms-line-strong: rgba(15, 23, 42, 0.14);
+    --mushrooms-lime: #4b7651;
+    --mushrooms-lime-light: #cbf0b0;
+    --mushrooms-lime-glow: rgba(75, 118, 81, 0.18);
+    --mushrooms-shadow: 0 1px 3px rgba(0, 0, 0, 0.04), 0 4px 16px rgba(0, 0, 0, 0.05);
+
+    --font-rules-compressed: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+    --font-rules-expanded: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+    --font-mondwest: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+    --font-courier: 'JetBrains Mono', ui-monospace, SFMono-Regular, monospace !important;
+  }
+
+  html, body, #root {
+    font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+    background-color: var(--mushrooms-canvas) !important;
+    color: #0f172a !important;
+    -webkit-font-smoothing: antialiased;
+    letter-spacing: -0.01em;
+  }
+
+  body {
+    background: radial-gradient(circle at 50% 0%, rgba(203, 240, 176, 0.25) 0%, transparent 60%), #f8fafc !important;
+  }
+
+  /* Override typography retro utilities */
+  .font-expanded,
+  .font-compressed,
+  .font-mondwest {
+    font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+    letter-spacing: -0.015em !important;
+  }
+
+  .font-courier {
+    font-family: 'JetBrains Mono', ui-monospace, SFMono-Regular, monospace !important;
+  }
+
+  /* Headings */
+  h1, h2, h3, h4,
+  [class*="CardTitle"],
+  [class*="font-expanded"],
+  [class*="text-display"] {
+    font-family: 'DM Sans', sans-serif !important;
+    text-transform: none !important;
+    letter-spacing: -0.02em !important;
+    color: #0f172a !important;
+  }
+  h1 { font-weight: 700 !important; font-size: 1.5rem !important; }
+  h2 { font-weight: 600 !important; font-size: 1.25rem !important; }
+  h3 { font-weight: 600 !important; font-size: 1rem !important; }
+
+  /* Brand */
+  aside#app-sidebar .tracking-\[0\.0525rem\] {
+    font-family: 'DM Sans', sans-serif !important;
+    text-transform: none !important;
+    letter-spacing: -0.02em !important;
+    font-size: 1.05rem !important;
+    font-weight: 700 !important;
+    color: #0f172a !important;
+  }
+
+  /* Scrollbars */
+  * {
+    scrollbar-width: thin !important;
+    scrollbar-color: rgba(15, 23, 42, 0.15) transparent !important;
+  }
+  ::-webkit-scrollbar {
+    width: 6px !important;
+    height: 6px !important;
+  }
+  ::-webkit-scrollbar-track {
+    background: transparent !important;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: rgba(15, 23, 42, 0.15) !important;
+    border-radius: 9999px !important;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: rgba(15, 23, 42, 0.3) !important;
+  }
+
+  /* Sidebar */
+  aside#app-sidebar {
+    background: var(--mushrooms-sidebar) !important;
+    backdrop-filter: blur(20px) !important;
+    -webkit-backdrop-filter: blur(20px) !important;
+    border-right: 1px solid var(--mushrooms-line) !important;
+    color: #0f172a !important;
+  }
+
+  aside#app-sidebar nav a,
+  aside#app-sidebar a,
+  aside#app-sidebar button {
+    border-radius: 0.625rem !important;
+    font-weight: 500 !important;
+    text-transform: none !important;
+    letter-spacing: normal !important;
+    font-size: 0.875rem !important;
+    color: #475569 !important;
+    transition: all 0.15s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  }
+
+  aside#app-sidebar nav a:hover,
+  aside#app-sidebar a:hover {
+    background: rgba(15, 23, 42, 0.05) !important;
+    color: #0f172a !important;
+  }
+
+  aside#app-sidebar nav a.active,
+  aside#app-sidebar a.active,
+  aside#app-sidebar a[aria-current="page"] {
+    background: #cbf0b0 !important;
+    color: #264a2c !important;
+    font-weight: 600 !important;
+    border: 1px solid rgba(75, 118, 81, 0.2) !important;
+    box-shadow: 0 1px 4px rgba(75, 118, 81, 0.15) !important;
+  }
+
+  /* Header */
+  header {
+    background: rgba(255, 255, 255, 0.85) !important;
+    backdrop-filter: blur(16px) !important;
+    border-bottom: 1px solid var(--mushrooms-line) !important;
+    color: #0f172a !important;
+  }
+
+  /* Cards */
+  .bg-card,
+  div[class*="bg-card"],
+  div[class*="border-midground\/15"] {
+    background: var(--mushrooms-panel) !important;
+    border: 1px solid var(--mushrooms-line) !important;
+    border-radius: 0.875rem !important;
+    box-shadow: var(--mushrooms-shadow) !important;
+    color: #0f172a !important;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease !important;
+  }
+
+  .bg-card:hover,
+  div[class*="bg-card"]:hover {
+    border-color: var(--mushrooms-line-strong) !important;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08) !important;
+  }
+
+  /* Card headers */
+  div[class*="CardHeader"],
+  .p-4.border-b {
+    border-bottom: 1px solid var(--mushrooms-line) !important;
+  }
+
+  /* Buttons */
+  button {
+    border-radius: 0.625rem !important;
+    font-family: 'DM Sans', sans-serif !important;
+    font-weight: 500 !important;
+    text-transform: none !important;
+    letter-spacing: normal !important;
+    transition: all 0.15s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  }
+
+  /* Inputs */
+  input, textarea, select {
+    background: #ffffff !important;
+    border: 1px solid var(--mushrooms-line-strong) !important;
+    border-radius: 0.625rem !important;
+    color: #0f172a !important;
+    font-family: 'DM Sans', sans-serif !important;
+    font-size: 0.875rem !important;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04) !important;
+    transition: all 0.15s ease !important;
+  }
+
+  input:focus, textarea:focus, select:focus {
+    border-color: #4b7651 !important;
+    outline: none !important;
+    box-shadow: 0 0 0 3px var(--mushrooms-lime-glow) !important;
+  }
+
+  /* Badges */
+  [class*="badge"],
+  [class*="rounded-full"],
+  div[class*="platformStateBadge"] {
+    font-family: 'DM Sans', sans-serif !important;
+    font-weight: 500 !important;
+    border-radius: 9999px !important;
+    text-transform: none !important;
+  }
+
+  /* Tabs */
+  div[role="tablist"],
+  .inline-flex.rounded-lg {
+    background: #f1f5f9 !important;
+    border: 1px solid var(--mushrooms-line) !important;
+    border-radius: 0.625rem !important;
+    padding: 3px !important;
+  }
+
+  div[role="tab"],
+  div[role="tablist"] button {
+    border-radius: 0.5rem !important;
+    font-size: 0.85rem !important;
+    font-weight: 500 !important;
+    color: #64748b !important;
+    transition: all 0.15s ease !important;
+  }
+
+  div[role="tab"][aria-selected="true"],
+  div[role="tablist"] button[data-state="active"] {
+    background: #ffffff !important;
+    color: #0f172a !important;
+    font-weight: 600 !important;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08) !important;
+  }
+
+  /* Tables */
+  table {
+    border-collapse: separate !important;
+    border-spacing: 0 !important;
+  }
+  th {
+    text-transform: uppercase !important;
+    font-size: 0.72rem !important;
+    letter-spacing: 0.06em !important;
+    color: #64748b !important;
+    border-bottom: 1px solid var(--mushrooms-line) !important;
+  }
+  td {
+    border-bottom: 1px solid rgba(15, 23, 42, 0.05) !important;
+    color: #0f172a !important;
+  }
